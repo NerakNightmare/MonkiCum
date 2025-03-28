@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños Mi Monki Fav!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            animation: backgroundWave 15s ease-in-out infinite;
+            scroll-behavior: smooth;
+        }
+        @keyframes backgroundWave {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: #ff69b4;
+            animation: floatHeart 4s linear infinite;
+            z-index: 1000;
+            opacity: 0;
+        }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) translateX(-50%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50%);
+                opacity: 0;
+            }
+        }
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .music-player:hover {
+            transform: scale(1.1);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1.1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1.1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1.1); }
+        }
+        .time-together {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            z-index: 1000;
+        }
+        .title-section {
+            padding: 3rem 0;
+            text-align: center;
+        }
+        .main-title {
+            color: #ff69b4;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .carousel-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .carousel-item img {
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .carousel-item img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(255, 105, 180, 0.3);
+        }
+        .carousel-control-prev, .carousel-control-next {
+            transition: all 0.3s ease;
+        }
+        .carousel-control-prev:hover, .carousel-control-next:hover {
+            background: rgba(255, 105, 180, 0.2);
+            border-radius: 50px;
+        }
+        .message-section {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-love {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .btn-love:hover {
+            transform: scale(1.1);
+            background: #ff1493;
+            box-shadow: 0 0 15px #ff69b4;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #ff69b4,
+                            0 0 10px #ff69b4,
+                            0 0 15px #ff69b4;
+            }
+            to {
+                box-shadow: 0 0 10px #ff1493,
+                            0 0 20px #ff1493,
+                            0 0 30px #ff1493;
+            }
+        }
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .cards-section {
+            padding: 2rem 0;
+        }
+        .memory-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .memory-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+        }
+        .memory-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+        .memory-card:hover::before {
+            transform: translateX(100%);
+        }
+        .memory-card::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .memory-card:hover::after {
+            opacity: 1;
+        }
+        .memory-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .memory-card .card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .memory-card .card-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(255, 105, 180, 0.2);
+            transition: all 0.3s ease;
+        }
+        .memory-card:hover .card-text {
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3); }
+            50% { text-shadow: 2px 2px 8px rgba(255, 20, 147, 0.5); }
+        }
+        .card-pink { background: linear-gradient(45deg, #ffe6f0, #fff, #ffe6f0); }
+        .card-blue { background: linear-gradient(45deg, #e6f0ff, #fff, #e6f0ff); }
+        .card-purple { background: linear-gradient(45deg, #f0e6ff, #fff, #f0e6ff); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <section class="title-section">
+            <h1 class="main-title animate__animated animate__bounceIn">¡Feliz Cumpleaños Monki!</h1>
+            <p class="lead animate__animated animate__fadeIn">En este día tan especial...</p>
+        </section>
+
+        <section class="carousel-section">
+            <div id="photoCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="3.jpg" class="d-block w-100" alt="Foto 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="2.jpg" class="d-block w-100" alt="Foto 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="1.jpg" class="d-block w-100" alt="Foto 1">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </section>
+
+        <section class="message-section animate__animated animate__fadeInUp">
+            <h2 class="text-center mb-4">VALERIA ABIGAIL MONJARAS SOTO</h2>
+            <p class="lead text-center">
+                Muchisimas felicidades mailob!
+            </p>
+            <p class="lead text-center">
+                No soy una persona experta en este tipo de cosas, pero decidi hacerte un bello detalle a mi estilo UNA PAGINA WEB!
+            </p>    
+            <p class="lead text-center">
+                La verdad no se en que momento te volviste una persona tan especial en mi vida, pero no me arrepiento ni un solo segundo de coincidir contigo
+            </p>
+            <p class="lead text-center">            
+                Hay mil y un razones por las cuales puedo quererte, desde que te conozco no hay segundo en el que no estes fuera de mi mente, desde que despieto hasta que voy a dormir
+            </p>
+            <p class="lead text-center">
+                Eres tan grandiosa, talentosa, inteligente, simpatica, cariñosa, amable pero especialmente eres mi Monki
+            </p>    
+            <p class="lead text-center">
+                Gracias por permitirme entrar en tu vida y en tu corazon
+            </p class="lead text-center">
+            <p class="lead text-center">
+                Gracias por hacerme feliz
+            </p>
+            <p class="lead text-center">
+                Gracias por iluminar mis dias
+            </p>
+            <p class="lead text-center">
+                Permiteme estar a tu lado mucho mucho tiempo mas
+            </p>
+            <p class="lead text-center">
+                Espero te la pases muy bonito, te mando un abrazo ENORME
+                Te quiero mucho, mi monki hermosa
+            </p>
+            <div class="text-center mt-4">
+                <button class="btn btn-love animate__animated animate__pulse animate__infinite">
+                    <i class="fas fa-heart"></i> Felicidades!
+                </button>
+            </div>
+        </section>
+
+        <section class="cards-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="memory-card card-pink animate__animated animate__fadeIn animate__delay-1s">
+                            <img src="5.jpg" alt="Foto con Monki">
+                            <div class="card-body">
+                                <p class="card-text">"Cada momento contigo me derrite el corazon. Tu sonrisa ilumina mis días."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="memory-card card-blue animate__animated animate__fadeIn animate__delay-2s">
+                            <img src="6.jpg" alt="Otro momento especial">
+                            <div class="card-body">
+                                <p class="card-text">"Eres la persona más increible que he conocido. Gracias por ser tan iconic."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="memory-card card-purple animate__animated animate__fadeIn animate__delay-3s">
+                            <img src="7.jpg" alt="Recuerdo bonito">
+                            <div class="card-body">
+                                <p class="card-text">"Gracias por compartir tantos momentos increibles conmigo. Me encatas."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-sweet-love-piano-225.mp3" type="audio/mpeg">
+    </audio>
+    <div class="music-player" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // Animación de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de brillo en las tarjetas
+            document.querySelectorAll('.memory-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = ((e.clientX - rect.left) / card.offsetWidth) * 100;
+                    const y = ((e.clientY - rect.top) / card.offsetHeight) * 100;
+                    card.style.setProperty('--x', `${x}%`);
+                    card.style.setProperty('--y', `${y}%`);
+                });
+            });
+
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.8s ease-out';
+            });
+
+            setTimeout(() => {
+                sections.forEach(section => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                });
+            }, 300);
+
+            // Corazones flotantes
+            setInterval(createHeart, 300);
+
+            // Contador de tiempo
+            const startDate = new Date('2023-09-01'); // Ajusta esta fecha al inicio de su relación
+            updateTimeCounter();
+            setInterval(updateTimeCounter, 1000);
+
+            // Confeti en el botón de ME ENCANTAS
+            document.querySelector('.btn-love').addEventListener('click', () => {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            });
+        });
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        function updateTimeCounter() {
+            const startDate = new Date('2023-09-01');
+            const now = new Date();
+            const diff = now - startDate;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('timeCounter').innerHTML = 
+                `${days} días<br>${hours} horas<br>${minutes} minutos<br>${seconds} segundos`;
+        }
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            if (music.paused) {
+                music.play();
+            } else {
+                music.pause();
+            }
+        }
+    </script>
+</body>
+</html>
